@@ -8,14 +8,13 @@ import requests
 import datetime
 import tldextract
 import shutil
-import nmap3
+
 
 
 def nmap_scan(domain, directory):
     today = datetime.datetime.now().strftime("%Y-%m-%d")
-    nmap = nampo3.nmap(domain)
     nmap_command = f"nmap {domain}"
-    nmap = subprocess.check_output(nmap_command, shell=True, text=True)
+    output = subprocess.check_output(nmap_command, shell=True, text=True)
     with open(f"{directory}/nmap", "w") as f:
         f.write(f"This scan was created on {today}\n\n")
         f.write(output)
